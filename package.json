@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"speed-test",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "speed-test",
+    "description": "api documentation for [speed-test (v1.8.0)](https://github.com/sindresorhus/speed-test#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-speed-test.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-speed-test) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-speed-test.svg)](https://travis-ci.org/npmdoc/node-npmdoc-speed-test)",
     "devDependencies": {
-        "speed-test": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "speed-test": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-speed-test",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-speed-test",
+    "keywords": [
+        "documentation",
+        "speed-test"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_speed_test.js",
+    "name": "npmdoc-speed-test",
+    "nameAlias": "npmdoc_speed_test",
+    "nameOriginal": "npmdoc-speed-test",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-speed-test"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
